@@ -1,4 +1,4 @@
-# GOIT NOTES
+# BLOCKNOTE
 
 ### Functionality
 
@@ -21,7 +21,7 @@ Run the application on port 9999.
 For a local purpose inmemory H2 database is using. User **local** profile for running app on you local environment.
 
 For production environment the application is deployed on the heroku server. The **prod** profile is using for this purpose.
-##### Address: https://goitnotesapp.herokuapp.com/
+##### Address:
 MySQL database is using on production environment.
 Flyway framework is using for migration.
 
