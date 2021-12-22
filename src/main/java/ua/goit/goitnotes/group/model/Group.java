@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import ua.goit.goitnotes.groupnote.model.GroupNote;
+import ua.goit.goitnotes.user.model.User;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -33,6 +34,11 @@ public class Group {
     private String description;
     @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
     private Set<GroupNote> groupNotes;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User owner;
+    @ManyToMany(mappedBy = "memberGroups", fetch = FetchType.EAGER)
+    private Set<User> members;
 
     public Group(UUID id, String name, String description, Set<GroupNote> groupNotes) {
         this.id = id;

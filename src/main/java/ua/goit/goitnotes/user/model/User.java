@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+import ua.goit.goitnotes.group.model.Group;
 import ua.goit.goitnotes.note.model.Note;
 import ua.goit.goitnotes.user.role.UserRole;
 
@@ -37,6 +38,15 @@ public class User {
     private UserRole userRole;
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Note> notes;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<Group> ownGroups;
+    @ManyToMany
+    @JoinTable(
+            name = "user_group",
+            joinColumns = { @JoinColumn(name = "user_id")},
+            inverseJoinColumns = { @JoinColumn(name = "group_id")}
+    )
+    Set<Group> memberGroups;
 
     public User(UUID id, String name, String password, UserRole userRole, Set<Note> notes) {
         this.id = id;
