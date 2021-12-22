@@ -38,7 +38,7 @@ public class User {
     private UserRole userRole;
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Note> notes;
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     private Set<Group> ownGroups;
     @ManyToMany
     @JoinTable(
