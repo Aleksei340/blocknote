@@ -84,4 +84,22 @@ public class ValidationService implements Validate {
         }
         return new ValidateResponse(errors.isEmpty(), errors);
     }
+
+    public ValidateResponse validateGroup(@NonNull ValidateGroupRequest groupRequest) {
+        log.info("validateGroup .");
+        List<ValidationError> errors = new ArrayList<>();
+        String name = groupRequest.getName();
+        String description = groupRequest.getDescription();
+        Pattern pattern = Pattern.compile("^[A-Za-z0-9]+$");
+        Matcher matcher = pattern.matcher(name);
+        if (name.length() < 5 || name.length() > 60) {
+            errors.add(ValidationError.WRONG_GROUP_NAME);
+            log.error("validateGroup . group name: '{}' should be only Latin symbols and digits only", name);
+        }
+        if (description.length() < 5 || description.length() > 10000) {
+            errors.add(ValidationError.WRONG_GROUP_DESCRIPTION_LENGTH);
+            log.error("validateGroup . group description length:'{}', but should be between 5 and 10000 included", description.length());
+        }
+        return new ValidateResponse(errors.isEmpty(), errors);
+    }
 }
