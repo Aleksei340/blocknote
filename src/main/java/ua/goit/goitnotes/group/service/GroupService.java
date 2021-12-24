@@ -19,7 +19,8 @@ public class GroupService implements CrudService<Group> {
 
     @Override
     public Group create(Group entity) {
-        return null;
+        log.info("create .");
+        return groupRepository.save(entity);
     }
 
     @Override
