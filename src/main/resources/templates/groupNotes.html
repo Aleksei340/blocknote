@@ -2,22 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <!--Import head with styles and script-->
 <head th:include="fragments :: head">
-    <title id="pageTitle">My groups</title>
+    <title id="pageTitle">Group notes</title>
 </head>
 <body>
 <!--Import navigation bar-->
 <div th:replace="fragments :: navibar"></div>
 <!--Set variable notes.size() & current endpoint-->
-<div th:with="listSize=${#lists.size(groups)}, endpoint=${#httpServletRequest.requestURI}">
+<div th:with="listSize=${#lists.size(notes)}, endpoint=${#httpServletRequest.requestURI}">
     <!--In case the list is empty-->
     <div th:if="${listSize <= 0}">
         <h2 th:switch="${endpoint}">
             <!--Render correct title after search-->
-            <span th:case="'/note/search'">No notes with such content</span>
+            <span th:case="'/note/search'">No group notes with such content</span>
             <!--In other cases-->
-            <span th:case="*" >No groups yet</span>
-            <a href="/group/create">
-                <button class="btn btn-warning my-2 my-sm-0" type="submit">Create</button>
+            <span th:case="*" >No group notes yet</span>
+            <a href="/note/create">
+                <button class="btn btn-warning my-2 my-sm-0" type="submit">Create Group Note</button>
             </a>
         </h2>
     </div>
@@ -25,11 +25,11 @@
     <div th:unless="${listSize <= 0}">
         <h2 th:switch="${endpoint}">
             <!--Render correct title after search "Result + size"-->
-            <span th:case="'/note/search'">Found notes - <span th:text="${listSize}"></span></span>
+            <span th:case="'/note/search'">Found group notes - <span th:text="${listSize}"></span></span>
             <!--In other cases show "My notes + size"-->
-            <span th:case="*" >My groups - <span th:text="${listSize}"></span></span>
-            <a href="/group/create">
-                <button class="btn btn-warning my-2 my-sm-0" type="submit">Create</button>
+            <span th:case="*" >My notes - <span th:text="${listSize}"></span></span>
+            <a href="/note/create">
+                <button class="btn btn-warning my-2 my-sm-0" type="submit">Create Group Note</button>
             </a>
         </h2>
         <table class="table table-hover" id="tab">
@@ -37,29 +37,24 @@
             <tr>
                 <th class="col-sm-1" scope="col">Name</th>
                 <th scope="col">Description</th>
-                <th class="col-sm-2" scope="col" colspan="3"></th>
+                <th class="col-sm-2" scope="col" colspan="2"></th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="group : ${groups}">
-                <td scope="row" th:text="${group.name}"></td>
+            <tr th:each="note : ${notes}">
+                <td scope="row" th:text="${note.title}"></td>
                 <!-- method to truncate note content and add url button for read more -->
-                <td class='content' th:data-href="@{/group/share?id={id}(id=${group.id})}"
-                    th:text="${group.description}"></td>
+                <td class='content' th:data-href="@{/note/share?id={id}(id=${note.id})}"
+                    th:text="${note.content}"></td>
                 <td align="center">
-                    <a th:href="@{/group/edit?id={id}(id=${group.id})}">
+                    <a th:href="@{/note/edit?id={id}(id=${note.id})}">
                         <button class="btn btn-outline-success my-2 my-sm-0">Edit</button>
-                    </a>
-                </td>
-                <td align="center">
-                    <a th:href="@{/group/notes?id={id}(id=${group.id})}">
-                        <button class="btn btn-outline-success my-2 my-sm-0">Notes</button>
                     </a>
                 </td>
                 <td align="center">
                     <button type="button" class="btn btn-outline-danger my-2 my-sm-0" data-toggle="modal"
                             data-target="#deleteModal"
-                            th:data-group-id="${group.id}" th:data-group-name="${group.name}">Delete
+                            th:data-note-id="${note.id}" th:data-note-name="${note.title}">Delete
                     </button>
                 </td>
             </tr>

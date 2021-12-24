@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.goit.goitnotes.group.model.Group;
 import ua.goit.goitnotes.group.service.GroupService;
+import ua.goit.goitnotes.groupnote.dto.GroupNoteDTO;
+import ua.goit.goitnotes.groupnote.service.GroupNoteService;
 import ua.goit.goitnotes.user.service.UserService;
 import ua.goit.goitnotes.validation.ValidateGroupRequest;
 import ua.goit.goitnotes.validation.ValidateResponse;
@@ -24,6 +26,7 @@ import java.util.stream.Collectors;
 @RequestMapping(path = "/group")
 public class GroupController {
     private final GroupService groupService;
+    private final GroupNoteService groupNoteService;
     private final ValidationService validationService;
     private final UserService userService;
 
@@ -67,6 +70,16 @@ public class GroupController {
             groupService.create(group);
         }
         return response;
+    }
+
+    @GetMapping("/notes")
+    public String showGroupNotes(@RequestParam(name = "id") UUID uuid, Model model) {
+        log.info("GroupController . showGroupNotes");
+        List<GroupNoteDTO> notes = groupNoteService.findByGroupId(uuid).stream()
+                .sorted(Comparator.comparing(GroupNoteDTO::getTitle))
+                .collect(Collectors.toList());
+        model.addAttribute("notes", notes);
+        return "groupNotes";
     }
 
 }
