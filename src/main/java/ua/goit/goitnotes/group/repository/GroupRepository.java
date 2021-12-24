@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Component
 public interface GroupRepository extends JpaRepository<Group, UUID> {
-    @Query("select g from Group g where (g.owner.id = ?1)")
+    @Query("""
+            select g from Group g where (g.user_id = ?1)""")
     List<Group> findByOwnerId(UUID id);
 }
