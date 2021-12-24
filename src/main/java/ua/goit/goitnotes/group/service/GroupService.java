@@ -7,6 +7,8 @@ import ua.goit.goitnotes.error_handling.ObjectNotFoundException;
 import ua.goit.goitnotes.group.model.Group;
 import ua.goit.goitnotes.group.repository.GroupRepository;
 import ua.goit.goitnotes.interfaces.CrudService;
+import ua.goit.goitnotes.user.model.User;
+import ua.goit.goitnotes.user.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class GroupService implements CrudService<Group> {
     private final GroupRepository groupRepository;
+    private final UserService userService;
 
     @Override
     public Group create(Group entity) {
@@ -59,6 +62,7 @@ public class GroupService implements CrudService<Group> {
 
     public List<Group> findByUserName(String userName) {
         log.info("findByUsrName groups .");
-        return groupRepository.findByOwner_Name(userName);
+        User user = userService.findByName(userName);
+        return groupRepository.findByOwnerId(user.getId());
     }
 }
