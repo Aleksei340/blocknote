@@ -11,8 +11,5 @@ public class ValidateGroupRequest {
     private String name;
     @NonNull
     private String description;
-    @NonNull
-    private String accessType;
-
     private String idString;
 }
