@@ -58,6 +58,6 @@ public class GroupService implements CrudService<Group> {
 
     public List<Group> findByUserName(String userName) {
         log.info("findByUsrName groups .");
-        return groupRepository.findByUser_Name(userName);
+        return groupRepository.findByOwner_Name(userName);
     }
 }

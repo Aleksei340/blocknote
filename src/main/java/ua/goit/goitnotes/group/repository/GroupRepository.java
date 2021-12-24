@@ -9,5 +9,5 @@ import java.util.UUID;
 
 @Component
 public interface GroupRepository extends JpaRepository<Group, UUID> {
-    List<Group> findByUser_Name(String userName);
+    List<Group> findByOwner_Name(String userName);
 }
