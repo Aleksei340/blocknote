@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <!--Head-->
 <head th:fragment="head">
-    <title th:include=":: #pageTitle">GOIT NOTES</title>
+    <title th:include=":: #pageTitle">BLOCKNOTE</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- JQuery -->
@@ -44,6 +44,9 @@
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a class="nav-link active" href="/note/list">Notes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/group/list">Groups</a>
                 </li>
             </ul>
             <ul class="navbar-nav mr-auto"></ul>

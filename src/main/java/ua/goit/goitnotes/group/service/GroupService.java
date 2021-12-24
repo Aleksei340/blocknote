@@ -1,6 +1,7 @@
 package ua.goit.goitnotes.group.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ua.goit.goitnotes.error_handling.ObjectNotFoundException;
 import ua.goit.goitnotes.group.model.Group;
@@ -10,7 +11,7 @@ import ua.goit.goitnotes.interfaces.CrudService;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class GroupService implements CrudService<Group> {
@@ -23,21 +24,25 @@ public class GroupService implements CrudService<Group> {
 
     @Override
     public Group update(Group entity) {
+        log.info("update group .");
         return groupRepository.save(entity);
     }
 
     @Override
     public void delete(UUID id) {
+        log.info("delete group .");
         groupRepository.deleteById(id);
     }
 
     @Override
     public List<Group> findAll() {
+        log.info("findAll groups .");
         return groupRepository.findAll();
     }
 
     @Override
     public Group findById(UUID id) {
+        log.info("findById group .");
         Optional<Group> group = groupRepository.findById(id);
         if (group.isEmpty()) {
             throw new ObjectNotFoundException(String.format("Object 'group' with ID %s not found", id));
@@ -49,5 +54,10 @@ public class GroupService implements CrudService<Group> {
     public Group findByName(String name) {
         // name of group isn't unique
         return null;
+    }
+
+    public List<Group> findByUserName(String userName) {
+        log.info("findByUsrName groups .");
+        return groupRepository.findByUser_Name(userName);
     }
 }
