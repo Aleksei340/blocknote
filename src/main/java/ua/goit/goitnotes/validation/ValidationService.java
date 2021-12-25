@@ -6,6 +6,7 @@ import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ua.goit.goitnotes.groupnote.service.GroupNoteService;
 import ua.goit.goitnotes.note.model.AccessType;
 import ua.goit.goitnotes.note.service.NoteService;
 import ua.goit.goitnotes.user.model.User;
@@ -26,6 +27,8 @@ import java.util.regex.Pattern;
 public class ValidationService implements Validate {
     @Autowired
     UserService userService;
+    @Autowired
+    GroupNoteService groupNoteService;
     @Autowired
     NoteService noteService;
 
@@ -85,6 +88,7 @@ public class ValidationService implements Validate {
         return new ValidateResponse(errors.isEmpty(), errors);
     }
 
+    @Override
     public ValidateResponse validateGroup(@NonNull ValidateGroupRequest groupRequest) {
         log.info("validateGroup .");
         List<ValidationError> errors = new ArrayList<>();
@@ -99,6 +103,23 @@ public class ValidationService implements Validate {
         if (description.length() < 5 || description.length() > 10000) {
             errors.add(ValidationError.WRONG_GROUP_DESCRIPTION_LENGTH);
             log.error("validateGroup . group description length:'{}', but should be between 5 and 10000 included", description.length());
+        }
+        return new ValidateResponse(errors.isEmpty(), errors);
+    }
+
+    @Override
+    public ValidateResponse validateGroupNote(ValidateGroupNoteRequest groupNoteRequest) {
+        log.info("validateGroupNote .");
+        List<ValidationError> errors = new ArrayList<>();
+        String title = groupNoteRequest.getTitle();
+        String content = groupNoteRequest.getContent();
+        if (title.length() < 5 || title.length() > 100) {
+            errors.add(ValidationError.WRONG_NOTE_TITLE_LENGTH);
+            log.error("validateNote . note title:'{}' length should be between 5 and 100 included", title);
+        }
+        if (content.length() < 5 || content.length() > 10000) {
+            errors.add(ValidationError.WRONG_NOTE_CONTENT_LENGTH);
+            log.error("validateNote . note content length:'{}', but should be between 5 and 10000 included", content.length());
         }
         return new ValidateResponse(errors.isEmpty(), errors);
     }

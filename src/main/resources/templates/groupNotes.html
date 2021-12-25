@@ -16,7 +16,7 @@
             <span th:case="'/note/search'">No group notes with such content</span>
             <!--In other cases-->
             <span th:case="*" >No group notes yet</span>
-            <a href="/note/create">
+            <a href="/groupNote/create?id={id}(id=${groupId})">
                 <button class="btn btn-warning my-2 my-sm-0" type="submit">Create Group Note</button>
             </a>
         </h2>
@@ -28,7 +28,7 @@
             <span th:case="'/note/search'">Found group notes - <span th:text="${listSize}"></span></span>
             <!--In other cases show "My notes + size"-->
             <span th:case="*" >My notes - <span th:text="${listSize}"></span></span>
-            <a href="/note/create">
+            <a href="/groupNote/create">
                 <button class="btn btn-warning my-2 my-sm-0" type="submit">Create Group Note</button>
             </a>
         </h2>
@@ -47,7 +47,7 @@
                 <td class='content' th:data-href="@{/note/share?id={id}(id=${note.id})}"
                     th:text="${note.content}"></td>
                 <td align="center">
-                    <a th:href="@{/note/edit?id={id}(id=${note.id})}">
+                    <a th:href="@{/groupNote/edit?id={id}(id=${note.id})}">
                         <button class="btn btn-outline-success my-2 my-sm-0">Edit</button>
                     </a>
                 </td>
