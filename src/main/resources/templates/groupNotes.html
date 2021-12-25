@@ -16,7 +16,7 @@
             <span th:case="'/note/search'">No group notes with such content</span>
             <!--In other cases-->
             <span th:case="*" >No group notes yet</span>
-            <a href="/groupNote/create?id={groupId}">
+            <a href="@/groupNote/create?id={id}(id=${groupId}">
                 <button class="btn btn-warning my-2 my-sm-0" type="submit">Create Group Note</button>
             </a>
         </h2>
