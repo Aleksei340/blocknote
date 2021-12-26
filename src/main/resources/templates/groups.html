@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <!--Import head with styles and script-->
 <head th:include="fragments :: head">
-    <title id="pageTitle">My groups</title>
+    <title id="pageTitle">Мої колективи</title>
 </head>
 <body>
 <!--Import navigation bar-->
@@ -15,9 +15,9 @@
             <!--Render correct title after search-->
             <span th:case="'/note/search'">No notes with such content</span>
             <!--In other cases-->
-            <span th:case="*" >No groups yet</span>
+            <span th:case="*" >Колективів ще не було</span>
             <a href="/group/create">
-                <button class="btn btn-warning my-2 my-sm-0" type="submit">Create</button>
+                <button class="btn btn-warning my-2 my-sm-0" type="submit">Створити колектив</button>
             </a>
         </h2>
     </div>
@@ -25,18 +25,18 @@
     <div th:unless="${listSize <= 0}">
         <h2 th:switch="${endpoint}">
             <!--Render correct title after search "Result + size"-->
-            <span th:case="'/note/search'">Found notes - <span th:text="${listSize}"></span></span>
+            <span th:case="'/note/search'">Знайдені нотатки - <span th:text="${listSize}"></span></span>
             <!--In other cases show "My notes + size"-->
-            <span th:case="*" >My groups - <span th:text="${listSize}"></span></span>
+            <span th:case="*" >Мої колективи - <span th:text="${listSize}"></span></span>
             <a href="/group/create">
-                <button class="btn btn-warning my-2 my-sm-0" type="submit">Create</button>
+                <button class="btn btn-warning my-2 my-sm-0" type="submit">Створити колектив</button>
             </a>
         </h2>
         <table class="table table-hover" id="tab">
             <thead>
             <tr>
-                <th class="col-sm-1" scope="col">Name</th>
-                <th scope="col">Description</th>
+                <th class="col-sm-1" scope="col">Назва</th>
+                <th scope="col">Короткий опис</th>
                 <th class="col-sm-2" scope="col" colspan="3"></th>
             </tr>
             </thead>
@@ -48,18 +48,18 @@
                     th:text="${group.description}"></td>
                 <td align="center">
                     <a th:href="@{/group/edit?id={id}(id=${group.id})}">
-                        <button class="btn btn-outline-success my-2 my-sm-0">Edit</button>
+                        <button class="btn btn-outline-success my-2 my-sm-0">Редагувати</button>
                     </a>
                 </td>
                 <td align="center">
                     <a th:href="@{/groupNote/list?id={id}(id=${group.id})}">
-                        <button class="btn btn-outline-success my-2 my-sm-0">Notes</button>
+                        <button class="btn btn-outline-success my-2 my-sm-0">Нотатки колективу</button>
                     </a>
                 </td>
                 <td align="center">
                     <button type="button" class="btn btn-outline-danger my-2 my-sm-0" data-toggle="modal"
                             data-target="#deleteModal"
-                            th:data-group-id="${group.id}" th:data-group-name="${group.name}">Delete
+                            th:data-group-id="${group.id}" th:data-group-name="${group.name}">Видалити
                     </button>
                 </td>
             </tr>
