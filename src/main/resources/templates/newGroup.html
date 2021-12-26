@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <!--Import head with styles and script-->
 <head th:include="fragments :: head">
-    <title id="pageTitle">New group</title>
+    <title id="pageTitle">Новий колектив</title>
 </head>
 <body>
 <!--Import navigation bar-->
@@ -13,23 +13,23 @@
     <p class="titleErrorField" style="color:red"></p>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-lg">Name</span>
+            <span class="input-group-text" id="inputGroup-sizing-lg">Назва</span>
         </div>
         <input class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"
-               id="name" name="name" type="text" minlength="5" maxlength="100" placeholder="Name of group here">
+               id="name" name="name" type="text" minlength="5" maxlength="100" placeholder="Створіть назву колективу">
     </div>
 
     <!--Content-->
     <p class="contentErrorField" style="color:red"></p>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text">Description</span>
+            <span class="input-group-text">Опис</span>
         </div>
-        <textarea class="form-control" aria-label="With textarea" placeholder="Write description here"
+        <textarea class="form-control" aria-label="With textarea" placeholder="Напишіть опис колективу"
                   id="description" name="description" cols="150" rows="20" minlength="5" maxlength="10000"></textarea>
     </div>
 
-    <button class="btn btn-outline-success btn-block" type="button" onclick="sendNoteToCreate()">Create</button>
+    <button class="btn btn-outline-success btn-block" type="button" onclick="sendNoteToCreate()">Створити</button>
 
 </div>
 </body>
