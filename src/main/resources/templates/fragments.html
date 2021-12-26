@@ -43,10 +43,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/note/list">Notes</a>
+                    <a class="nav-link active" href="/note/list">Нотатки</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/group/list">Groups</a>
+                    <a class="nav-link active" href="/group/list">Колективи</a>
                 </li>
             </ul>
             <ul class="navbar-nav mr-auto"></ul>
@@ -57,13 +57,13 @@
                       sec:authorize="isFullyAuthenticated()" class="form-inline my-2 my-lg-0" action="/note/search">
                     <input class="form-control mr-sm-2" style="width: 300px;" placeholder="Search" aria-label="Search"
                            name="contains" id="contains" type="search" th:value="${contains}" >
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Пошук</button>
                 </form>
             </div>
             <!--for authorised users only-->
             <ul class="navbar-nav mr-auto"></ul>
             <form sec:authorize="isFullyAuthenticated()" class="form-inline my-2 my-lg-0" action="/logout">
-                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Logout</button>
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Вийти з акаунту</button>
             </form>
         </div>
     </nav>
@@ -79,10 +79,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Note will be deleted, are you sure you want to proceed?</p>
+                <p>Нотатку буде видалено, чи справді Ви цього хочете?</p>
             </div>
             <div class="modal-footer">
-                <a class="btn btn-danger" href="#">Delete anyway</a>
+                <a class="btn btn-danger" href="#">Видалити назавжди</a>
             </div>
         </div>
     </div>
