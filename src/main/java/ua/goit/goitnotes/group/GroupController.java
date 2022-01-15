@@ -56,7 +56,7 @@ public class GroupController {
     }
 
     @PostMapping("/create")
-    public ValidateResponse createNoteOrShowException(@RequestBody ValidateGroupRequest groupRequest) {
+    public ValidateResponse createGroupOrShowException(@RequestBody ValidateGroupRequest groupRequest) {
         log.info("GroupController . createNoteOrShowException");
         ValidateResponse response = validationService.validateGroup(groupRequest);
         if (response.isSuccess()) {
