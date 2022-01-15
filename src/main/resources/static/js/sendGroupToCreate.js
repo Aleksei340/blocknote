@@ -1,4 +1,4 @@
-        function sendNoteToCreate(){
+        function sendGroupToCreate(){
             const WRONG_NAME_LENGTH = "The name mast be at least 5 symbols, up to 100 symbols";
             const WRONG_DESCRIPTION_LENGTH = "The description must be at least 5 symbols, up to 10000 symbols";
             let titleErrorField = document.querySelector('.titleErrorField');
