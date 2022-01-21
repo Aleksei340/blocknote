@@ -58,7 +58,7 @@
                 </td>
                 <td align="center">
                     <button type="button" class="btn btn-outline-danger my-2 my-sm-0" data-toggle="modal"
-                            data-target="#deleteModal"
+                            data-target="#deleteGroupModal"
                             th:data-group-id="${group.id}" th:data-group-name="${group.name}">Видалити
                     </button>
                 </td>
@@ -69,7 +69,7 @@
 </div>
 
 <!-- Modal window with warning for delete operation-->
-<div th:replace="fragments :: modalDelete"></div>
+<div th:replace="fragments :: deleteGroupModal"></div>
 
 <!-- scripts -->
 <script src="/js/copyFunction.js"></script>

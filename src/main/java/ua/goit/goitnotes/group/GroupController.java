@@ -47,7 +47,7 @@ public class GroupController {
         } else {
             return "redirect:/error";
         }
-        return "redirect:/error";
+        return "redirect:/group/list";
     }
 
     @GetMapping("/create")

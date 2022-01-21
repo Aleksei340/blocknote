@@ -10,3 +10,14 @@ $('#deleteModal').on('show.bs.modal', function (event) {
   modal.find('.modal-body p').text('Are you sure you want to delete note with title - ' + noteName + '?')
   $('.btn-danger', this).attr('href', href)
 })
+$('#deleteGroupModal').on('show.bs.modal', function(event) {
+     var button = $(event.relatedTarget)
+     var groupId = button.data('group-id')
+     var groupName = button.data('group-name')
+
+     var href = '/group/delete?id=' + groupId
+
+     var modal = $(this)
+     modal.find('.modal-body p'.text('Are you sure you want to delete group with name - ' + groupName + '?'))
+    $('.btn-danger', this).attr('href', href)
+})
