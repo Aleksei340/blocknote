@@ -16,6 +16,7 @@
             <span th:case="'/note/search'">No group notes with such content</span>
             <!--In other cases-->
             <span th:case="*" >No group notes yet</span>
+            <a th:href="@{/groupNote/create?id={id}(id=${groupId})}">
             <a href="/groupNote/create">
                 <button class="btn btn-warning my-2 my-sm-0" type="submit">Create Group Note</button>
             </a>
@@ -29,7 +30,7 @@
             <!--In other cases show "My notes + size"-->
             <span th:case="*" >My notes - <span th:text="${listSize}"></span></span>
             <a href="/groupNote/create">
-                <button class="btn btn-warning my-2 my-sm-0" type="submit">Create Note</button>
+                <button class="btn btn-warning my-2 my-sm-0" type="submit">Create ffdsfsdhsdhldsfhdsfhlsdlhkhdfslkh Note</button>
             </a>
         </h2>
         <table class="table table-hover" id="tab">
