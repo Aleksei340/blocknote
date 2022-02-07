@@ -1,4 +1,4 @@
-        function sendNoteToCreate(){
+        function sendGroupNoteToCreate(){
             const WRONG_TITLE_LENGTH = "The title mast be at least 5 symbols, up to 100 symbols";
             const WRONG_NOTE_LENGTH = "The note must be at least 5 symbols, up to 10000 symbols";
             let titleErrorField = document.querySelector('.titleErrorField');
@@ -17,7 +17,7 @@
                  if (request.readyState === 4 && request.status === 200) {
                     var operationStatus = request.response;
                     if (operationStatus.success===true){
-                        window.location.href = '/';
+                        window.location.href = '/groupNote/list';
                     } else{
                         operationStatus.errors.forEach(function(error) {
                             switch (error){
@@ -28,7 +28,7 @@
                                 contentErrorField.innerHTML = WRONG_NOTE_LENGTH;
                                 break;
                             }
-                            })
+                        })
                  }}
             };
             var data = JSON.stringify({ "title": title.value, "content": text.value, "groupUUID": uuid.value});
