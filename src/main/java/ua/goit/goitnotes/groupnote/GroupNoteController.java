@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ua.goit.goitnotes.group.model.Group;
 import ua.goit.goitnotes.group.service.GroupService;
 import ua.goit.goitnotes.groupnote.dto.GroupNoteDTO;
 import ua.goit.goitnotes.groupnote.service.GroupNoteService;
@@ -39,7 +40,8 @@ public class GroupNoteController {
 
     @GetMapping("/create")
     public String showCreateGroupNotePage(@RequestParam(name = "id") UUID uuid, Model model) {
-        model.addAttribute("groupId", uuid);
+        Group group = groupService.findById(uuid);
+        model.addAttribute("group", group);
         return "newGroupNote";
     }
 
