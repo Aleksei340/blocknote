@@ -11,4 +11,6 @@ public class ValidateGroupNoteRequest {
     private String title;
     @NonNull
     private String content;
+
+    private String idString;
 }

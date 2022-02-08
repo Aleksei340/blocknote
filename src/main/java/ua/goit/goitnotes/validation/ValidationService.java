@@ -108,11 +108,12 @@ public class ValidationService implements Validate {
     }
 
     @Override
-    public ValidateResponse validateGroupNote(ValidateGroupNoteRequest groupNoteRequest) {
+    public ValidateResponse validateGroupNote(@NonNull ValidateGroupNoteRequest groupNoteRequest) {
         log.info("validateGroupNote .");
         List<ValidationError> errors = new ArrayList<>();
         String title = groupNoteRequest.getTitle();
         String content = groupNoteRequest.getContent();
+        String groupNoteIdString = groupNoteRequest.getIdString();
         if (title.length() < 5 || title.length() > 100) {
             errors.add(ValidationError.WRONG_NOTE_TITLE_LENGTH);
             log.error("validateNote . note title:'{}' length should be between 5 and 100 included", title);
