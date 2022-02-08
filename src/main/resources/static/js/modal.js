@@ -15,6 +15,8 @@ $('#deleteGroupModal').on('show.bs.modal', function(event) {
      var groupId = button.data('group-id')
      var groupName = button.data('group-name')
 
+    console.log('Привет от JavaScript!');
+    console.log(groupId);
      var href = '/group/delete?id=' + groupId
 
      var modal = $(this)
