@@ -9,6 +9,8 @@
             let text = document.querySelector('#note');
             let uuid = document.querySelector('#group');
             let request = new XMLHttpRequest();
+            console.log('Привет от JavaScript!');
+            console.log(uuid.value);
             let url = "/groupNote/create?id="+uuid.value;
             request.open("POST", url, true);
             request.setRequestHeader("Content-Type", "application/json");
