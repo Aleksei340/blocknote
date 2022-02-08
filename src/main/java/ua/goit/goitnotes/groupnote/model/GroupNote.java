@@ -3,7 +3,6 @@ package ua.goit.goitnotes.groupnote.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import ua.goit.goitnotes.group.model.Group;
 
@@ -17,11 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class GroupNote {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Type(type = "uuid-char")
     @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
