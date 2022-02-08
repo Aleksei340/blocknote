@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 
-import java.util.UUID;
-
 @AllArgsConstructor
 @Data
 public class ValidateGroupNoteRequest {
@@ -13,6 +11,4 @@ public class ValidateGroupNoteRequest {
     private String title;
     @NonNull
     private String content;
-    @NonNull
-    private UUID groupUUID;
 }
