@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "groupNotes")
+@Table(name = "groupnotes")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

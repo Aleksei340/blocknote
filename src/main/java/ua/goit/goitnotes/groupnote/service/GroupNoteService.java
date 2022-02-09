@@ -32,7 +32,7 @@ public class GroupNoteService implements CrudService<GroupNoteDTO> {
     public GroupNoteDTO update(GroupNoteDTO entity) {
         log.info("update groupNote .");
         GroupNote groupNote = noteConvertor.fromDTO(entity);
-        return  noteConvertor.toDTO(noteRepository.save(groupNote));
+        return noteConvertor.toDTO(noteRepository.save(groupNote));
     }
 
     @Override

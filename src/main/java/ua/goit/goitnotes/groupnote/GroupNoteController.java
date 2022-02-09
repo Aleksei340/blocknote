@@ -46,15 +46,17 @@ public class GroupNoteController {
     }
 
     @PostMapping("/create")
+    @ResponseBody
     public ValidateResponse createNoteOrShowException(@RequestBody ValidateGroupNoteRequest validateGroupNoteRequest,
                                                       @RequestParam(name = "id") UUID uuid) {
         log.info("GroupNoteController . createGroupNoteOrShowException");
+        Group group = groupService.findById(uuid);
         ValidateResponse response = validationService.validateGroupNote(validateGroupNoteRequest);
         if (response.isSuccess()) {
             GroupNoteDTO groupNoteDTO = new GroupNoteDTO();
             groupNoteDTO.setTitle(validateGroupNoteRequest.getTitle());
             groupNoteDTO.setContent(validateGroupNoteRequest.getContent());
-            groupNoteDTO.setGroupID(uuid);
+            groupNoteDTO.setGroupID(group.getId());
             groupNoteService.create(groupNoteDTO);
         }
         return response;
